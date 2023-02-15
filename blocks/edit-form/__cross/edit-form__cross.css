@@ -1,0 +1,10 @@
+.edit-form__cross {
+  margin-bottom: 400px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.edit-form__cross:hover {
+  opacity: 0.6;
+}

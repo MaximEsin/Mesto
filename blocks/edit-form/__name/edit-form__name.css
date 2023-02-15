@@ -1,0 +1,14 @@
+.edit-form__name {
+  border: none;
+  border-bottom: 1px solid #000;
+  margin-top: 54px;
+  padding-bottom: 13px;
+}
+
+.edit-form__name::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
