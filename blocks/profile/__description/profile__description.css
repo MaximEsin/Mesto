@@ -5,4 +5,20 @@
   font-size: 18px;
   line-height: 22px;
   color: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media all and (max-width: 650px) {
+  .profile__description {
+    margin: 0 auto 0;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .profile__description {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }

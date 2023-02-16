@@ -6,4 +6,14 @@
   line-height: 48px;
   color: #fff;
   margin-bottom: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media all and (max-width: 600px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+  }
 }

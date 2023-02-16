@@ -4,3 +4,9 @@
   margin-top: 66px;
   margin-bottom: 60px;
 }
+
+@media all and (max-width: 600px) {
+  .footer {
+    margin-top: 48px;
+  }
+}

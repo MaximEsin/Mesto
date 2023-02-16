@@ -5,3 +5,10 @@
   padding-bottom: 41px;
   border-bottom: 1px solid #545454;
 }
+
+@media all and (max-width: 600px) {
+  .header {
+    margin-top: 28px;
+    padding-bottom: 31px;
+  }
+}

@@ -2,3 +2,10 @@
   width: 282px;
   height: 282px;
 }
+
+@media all and (max-width: 894px) {
+  .element__image {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

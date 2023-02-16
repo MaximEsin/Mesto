@@ -7,3 +7,11 @@
   box-sizing: border-box;
   border-radius: 10px;
 }
+
+@media all and (max-width: 600px) {
+  .edit-form__container {
+    width: 282px;
+    height: 322px;
+    padding: 22px 25px 22px;
+  }
+}

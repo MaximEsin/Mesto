@@ -7,3 +7,10 @@
   color: #ffffff;
   margin: 0;
 }
+
+@media all and (max-width: 600px) {
+  .edit-form__submit {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

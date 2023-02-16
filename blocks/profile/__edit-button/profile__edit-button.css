@@ -10,3 +10,17 @@
 .profile__edit-button:hover {
   opacity: 0.6;
 }
+
+@media all and (max-width: 650px) {
+  .profile__edit-button {
+    margin-left: 10px;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .profile__edit-button {
+    margin-top: 5px;
+    width: 18px;
+    height: 18px;
+  }
+}
