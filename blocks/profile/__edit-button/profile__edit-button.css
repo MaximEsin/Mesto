@@ -5,6 +5,9 @@
   margin-top: 15px;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  background-image: url(../../../images/Edit-Button.svg);
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.000005);
 }
 
 .profile__edit-button:hover {
@@ -19,8 +22,9 @@
 
 @media all and (max-width: 600px) {
   .profile__edit-button {
-    margin-top: 5px;
+    margin-top: 10px;
     width: 18px;
     height: 18px;
+    background-image: url(../../../images/Edit-Button-small.svg);
   }
 }

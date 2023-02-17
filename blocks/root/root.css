@@ -3,5 +3,12 @@
   flex-direction: column;
   background-color: #000000;
   align-items: center;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Arial', sans-serif;
+}
+
+@media all and (max-width: 885px) {
+  .root {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }

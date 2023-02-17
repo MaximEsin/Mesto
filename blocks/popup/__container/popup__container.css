@@ -1,17 +1,14 @@
-.edit-form__container {
+.popup__container {
   width: 430px;
   background-color: #fff;
-  display: flex;
-  flex-direction: column;
   padding: 34px 36px 37px;
   box-sizing: border-box;
   border-radius: 10px;
 }
 
 @media all and (max-width: 600px) {
-  .edit-form__container {
+  .popup__container {
     width: 282px;
-    height: 322px;
-    padding: 22px 25px 22px;
+    padding: 25px 22px 25px;
   }
 }
