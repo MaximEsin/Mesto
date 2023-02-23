@@ -112,16 +112,36 @@ const handleItemFormSubmit = (evt) => {
     name: itemModalNameValue,
     link: itemModalLinkValue,
   };
+
   initialCards.unshift(newItem);
   itemModal.classList.remove('popup_opened');
   itemModalName.value = '';
   itemModalLink.value = '';
 
-  elementsSection.append(
-    elementTemplate.querySelector('.element').cloneNode(true)
-  );
+  const elementClone = elementTemplate
+    .querySelector('.element')
+    .cloneNode(true);
+
+  const cloneLike = elementClone.querySelector('.element__like-button');
+
+  cloneLike.addEventListener('click', () => {
+    cloneLike.classList.toggle('element__like-button_active');
+  });
+
+  console.log(elementClone);
+
+  elementsSection.prepend(elementClone);
 
   renderElements();
 };
 
 itemModalSubmit.addEventListener('click', handleItemFormSubmit);
+
+// Like button toggle
+const likeButtons = document.querySelectorAll('.element__like-button');
+
+likeButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('element__like-button_active');
+  });
+});
