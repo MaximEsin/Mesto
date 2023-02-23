@@ -35,6 +35,41 @@
           </form>
         </div>
       </div>
+      <div class="popup" id="item-popup">
+        <button
+          class="popup__cross"
+          type="button"
+          aria-label="close"
+          id="item-popup-cross"
+        ></button>
+        <div class="popup__container">
+          <form class="popup__form" name="new-place">
+            <h2 class="popup__title">Новое место</h2>
+            <input
+              class="popup__input popup__input_value_name"
+              id="item-popup-input-name"
+              name="name"
+              type="text"
+              placeholder="Название"
+            />
+            <input
+              class="popup__input popup__input_value_description"
+              id="item-popup-input-link"
+              name="description"
+              type="text"
+              placeholder="Ссылка на картинку"
+            />
+            <button
+              class="popup__button"
+              type="submit"
+              aria-label="save"
+              id="item-popup-button"
+            >
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
       <header class="header">
         <div class="logo"></div>
       </header>
@@ -60,13 +95,9 @@
         </section>
         <section class="elements">
           <div class="element">
-            <img
-              src="./images/ElementOne.png"
-              class="element__image"
-              alt="Пейзаж"
-            />
+            <img class="element__image" alt="Пейзаж" />
             <div class="element__container">
-              <h2 class="element__title">Карачаевск</h2>
+              <h2 class="element__title"></h2>
               <button
                 type="button"
                 aria-label="like"
@@ -75,13 +106,9 @@
             </div>
           </div>
           <div class="element">
-            <img
-              src="./images/ElementTwo.png"
-              class="element__image"
-              alt="Пейзаж"
-            />
+            <img class="element__image" alt="Пейзаж" />
             <div class="element__container">
-              <h2 class="element__title">Гора Эльбрус</h2>
+              <h2 class="element__title"></h2>
               <button
                 type="button"
                 aria-label="like"
@@ -90,13 +117,9 @@
             </div>
           </div>
           <div class="element">
-            <img
-              src="./images/ElementThree.png"
-              class="element__image"
-              alt="Пейзаж"
-            />
+            <img class="element__image" alt="Пейзаж" />
             <div class="element__container">
-              <h2 class="element__title">Домбай</h2>
+              <h2 class="element__title"></h2>
               <button
                 type="button"
                 aria-label="like"
@@ -105,13 +128,9 @@
             </div>
           </div>
           <div class="element">
-            <img
-              src="./images/ElementOne.png"
-              class="element__image"
-              alt="Пейзаж"
-            />
+            <img class="element__image" alt="Пейзаж" />
             <div class="element__container">
-              <h2 class="element__title">Гора Эльбрус</h2>
+              <h2 class="element__title"></h2>
               <button
                 type="button"
                 aria-label="like"
@@ -120,13 +139,9 @@
             </div>
           </div>
           <div class="element">
-            <img
-              src="./images/ElementTwo.png"
-              class="element__image"
-              alt="Пейзаж"
-            />
+            <img class="element__image" alt="Пейзаж" />
             <div class="element__container">
-              <h2 class="element__title">Домбай</h2>
+              <h2 class="element__title"></h2>
               <button
                 type="button"
                 aria-label="like"
@@ -135,13 +150,9 @@
             </div>
           </div>
           <div class="element">
-            <img
-              src="./images/ElementThree.png"
-              class="element__image"
-              alt="Пейзаж"
-            />
+            <img class="element__image" alt="Пейзаж" />
             <div class="element__container">
-              <h2 class="element__title">Карачаево-Карачаево</h2>
+              <h2 class="element__title"></h2>
               <button
                 type="button"
                 aria-label="like"
@@ -149,6 +160,19 @@
               ></button>
             </div>
           </div>
+          <template id="element-template">
+            <div class="element">
+              <img class="element__image" alt="Пейзаж" />
+              <div class="element__container">
+                <h2 class="element__title"></h2>
+                <button
+                  type="button"
+                  aria-label="like"
+                  class="element__like-button"
+                ></button>
+              </div>
+            </div>
+          </template>
         </section>
       </main>
       <footer class="footer">

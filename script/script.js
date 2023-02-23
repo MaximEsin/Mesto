@@ -63,3 +63,65 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
   },
 ];
+
+// Cards
+
+const renderElements = () => {
+  const names = document.querySelectorAll('.element__title');
+  const namesArray = Array.from(names);
+  const images = document.querySelectorAll('.element__image');
+  const imagesArray = Array.from(images);
+
+  namesArray.forEach((name) => {
+    for (i = 0; i <= namesArray.indexOf(name); i++) {
+      name.textContent = initialCards[i].name;
+    }
+  });
+
+  imagesArray.forEach((image) => {
+    for (i = 0; i <= imagesArray.indexOf(image); i++) {
+      image.src = initialCards[i].link;
+    }
+  });
+};
+renderElements();
+// Item modal
+const addButton = document.querySelector('.profile__add-button');
+const closeItemModalButton = document.querySelector('#item-popup-cross');
+const itemModal = document.querySelector('#item-popup');
+const itemModalName = document.querySelector('#item-popup-input-name');
+const itemModalLink = document.querySelector('#item-popup-input-link');
+const itemModalSubmit = document.querySelector('#item-popup-button');
+const elementTemplate = document.querySelector('#element-template').content;
+const elementsSection = document.querySelector('.elements');
+
+addButton.addEventListener('click', () => {
+  itemModal.classList.add('popup_opened');
+});
+
+closeItemModalButton.addEventListener('click', () => {
+  itemModal.classList.remove('popup_opened');
+});
+
+const handleItemFormSubmit = (evt) => {
+  evt.preventDefault();
+  const itemModalNameValue = itemModalName.value;
+  const itemModalLinkValue = itemModalLink.value;
+
+  const newItem = {
+    name: itemModalNameValue,
+    link: itemModalLinkValue,
+  };
+  initialCards.unshift(newItem);
+  itemModal.classList.remove('popup_opened');
+  itemModalName.value = '';
+  itemModalLink.value = '';
+
+  elementsSection.append(
+    elementTemplate.querySelector('.element').cloneNode(true)
+  );
+
+  renderElements();
+};
+
+itemModalSubmit.addEventListener('click', handleItemFormSubmit);
