@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="root">
-      <div class="popup popup_opened">
+      <div class="popup">
         <button class="popup__cross" type="button" aria-label="close"></button>
         <div class="popup__container">
           <form class="popup__form" name="profile-edit">
@@ -21,13 +21,13 @@
               class="popup__input popup__input_value_name"
               name="name"
               type="text"
-              placeholder="Жак-Ив Кусто"
+              value="Жак-Ив Кусто"
             />
             <input
               class="popup__input popup__input_value_description"
               name="description"
               type="text"
-              placeholder="Исследователь океана"
+              value="Исследователь океана"
             />
             <button class="popup__button" type="submit" aria-label="save">
               Сохранить
@@ -42,12 +42,14 @@
         <section class="profile">
           <img src="./images/Avatar.png" class="profile__avatar" alt="Аватар" />
           <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button
-              type="button"
-              aria-label="edit"
-              class="profile__edit-button"
-            ></button>
+            <div class="profile__info-container">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button
+                type="button"
+                aria-label="edit"
+                class="profile__edit-button"
+              ></button>
+            </div>
             <p class="profile__description">Исследователь океана</p>
           </div>
           <button
@@ -153,5 +155,6 @@
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
     </div>
+    <script src="./script/script.js"></script>
   </body>
 </html>
