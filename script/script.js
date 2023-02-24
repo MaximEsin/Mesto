@@ -166,6 +166,8 @@ const handlePhotoModal = () => {
   const elementImages = document.querySelectorAll('.element__image');
   const popupClone = imageModalTemplate.querySelector('.popup').cloneNode(true);
 
+  root.prepend(popupClone);
+
   elementImages.forEach((image) => {
     image.addEventListener('click', () => {
       const popupImage = popupClone.querySelector('.popup__image');
@@ -177,7 +179,7 @@ const handlePhotoModal = () => {
         elementContainer.querySelector('.element__title').textContent;
       popupImage.src = image.src;
       popupText.textContent = title;
-      root.prepend(popupClone);
+      popupClone.classList.add('popup_opened');
     });
   });
 
@@ -185,7 +187,7 @@ const handlePhotoModal = () => {
   const closeButton = popupClone.querySelector('.popup__cross');
 
   closeButton.addEventListener('click', () => {
-    popupClone.remove();
+    popupClone.classList.remove('popup_opened');
   });
 };
 handlePhotoModal();
