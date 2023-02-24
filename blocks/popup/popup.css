@@ -9,4 +9,5 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
+  z-index: 1;
 }

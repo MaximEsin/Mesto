@@ -65,7 +65,6 @@ const initialCards = [
 ];
 
 // Cards
-
 const renderElements = () => {
   const names = document.querySelectorAll('.element__title');
   const namesArray = Array.from(names);
@@ -85,6 +84,7 @@ const renderElements = () => {
   });
 };
 renderElements();
+
 // Item modal
 const addButton = document.querySelector('.profile__add-button');
 const closeItemModalButton = document.querySelector('#item-popup-cross');
@@ -123,12 +123,16 @@ const handleItemFormSubmit = (evt) => {
     .cloneNode(true);
 
   const cloneLike = elementClone.querySelector('.element__like-button');
+  const cloneDelete = elementClone.querySelector('.element__delete');
 
   cloneLike.addEventListener('click', () => {
     cloneLike.classList.toggle('element__like-button_active');
   });
 
-  console.log(elementClone);
+  cloneDelete.addEventListener('click', () => {
+    const element = cloneDelete.closest('.element');
+    element.remove();
+  });
 
   elementsSection.prepend(elementClone);
 
@@ -143,5 +147,15 @@ const likeButtons = document.querySelectorAll('.element__like-button');
 likeButtons.forEach((button) => {
   button.addEventListener('click', () => {
     button.classList.toggle('element__like-button_active');
+  });
+});
+
+// Delete button
+const deleteButtons = document.querySelectorAll('.element__delete');
+
+deleteButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const element = button.closest('.element');
+    element.remove();
   });
 });
