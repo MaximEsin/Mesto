@@ -11,3 +11,57 @@
 .element__delete:hover {
   opacity: 0.5;
 }
+
+@media all and (max-width: 894px) {
+  .element__delete {
+    right: 90px;
+  }
+}
+
+@media all and (max-width: 825px) {
+  .element__delete {
+    right: 70px;
+  }
+}
+
+@media all and (max-width: 755px) {
+  .element__delete {
+    right: 50px;
+  }
+}
+
+@media all and (max-width: 650px) {
+  .element__delete {
+    right: 30px;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .element__delete {
+    right: 160px;
+  }
+}
+
+@media all and (max-width: 525px) {
+  .element__delete {
+    right: 120px;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .element__delete {
+    right: 80px;
+  }
+}
+
+@media all and (max-width: 360px) {
+  .element__delete {
+    right: 50px;
+  }
+}
+
+@media all and (max-width: 335px) {
+  .element__delete {
+    right: 30px;
+  }
+}

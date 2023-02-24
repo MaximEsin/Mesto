@@ -121,7 +121,6 @@ const handleItemFormSubmit = (evt) => {
   const elementClone = elementTemplate
     .querySelector('.element')
     .cloneNode(true);
-
   const cloneLike = elementClone.querySelector('.element__like-button');
   const cloneDelete = elementClone.querySelector('.element__delete');
 
@@ -135,7 +134,7 @@ const handleItemFormSubmit = (evt) => {
   });
 
   elementsSection.prepend(elementClone);
-
+  handlePhotoModal();
   renderElements();
 };
 
@@ -159,3 +158,34 @@ deleteButtons.forEach((button) => {
     element.remove();
   });
 });
+
+const handlePhotoModal = () => {
+  // Open photo
+  const imageModalTemplate = document.querySelector('#popup-template').content;
+  const root = document.querySelector('.root');
+  const elementImages = document.querySelectorAll('.element__image');
+  const popupClone = imageModalTemplate.querySelector('.popup').cloneNode(true);
+
+  elementImages.forEach((image) => {
+    image.addEventListener('click', () => {
+      const popupImage = popupClone.querySelector('.popup__image');
+      const popupText = popupClone.querySelector('.popup__place');
+      const element = image.closest('.element');
+      const elementChildren = element.children;
+      const elementContainer = elementChildren[2];
+      const title =
+        elementContainer.querySelector('.element__title').textContent;
+      popupImage.src = image.src;
+      popupText.textContent = title;
+      root.prepend(popupClone);
+    });
+  });
+
+  // Close photo
+  const closeButton = popupClone.querySelector('.popup__cross');
+
+  closeButton.addEventListener('click', () => {
+    popupClone.remove();
+  });
+};
+handlePhotoModal();
