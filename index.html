@@ -12,64 +12,6 @@
   </head>
   <body>
     <div class="root">
-      <div class="popup">
-        <button class="popup__cross" type="button" aria-label="close"></button>
-        <div class="popup__container">
-          <form class="popup__form" name="profile-edit">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input
-              class="popup__input popup__input_value_name"
-              name="name"
-              type="text"
-              value="Жак-Ив Кусто"
-            />
-            <input
-              class="popup__input popup__input_value_description"
-              name="description"
-              type="text"
-              value="Исследователь океана"
-            />
-            <button class="popup__button" type="submit" aria-label="save">
-              Сохранить
-            </button>
-          </form>
-        </div>
-      </div>
-      <div class="popup" id="item-popup">
-        <button
-          class="popup__cross"
-          type="button"
-          aria-label="close"
-          id="item-popup-cross"
-        ></button>
-        <div class="popup__container">
-          <form class="popup__form" name="new-place">
-            <h2 class="popup__title">Новое место</h2>
-            <input
-              class="popup__input popup__input_value_name"
-              id="item-popup-input-name"
-              name="name"
-              type="text"
-              placeholder="Название"
-            />
-            <input
-              class="popup__input popup__input_value_description"
-              id="item-popup-input-link"
-              name="description"
-              type="text"
-              placeholder="Ссылка на картинку"
-            />
-            <button
-              class="popup__button"
-              type="submit"
-              aria-label="save"
-              id="item-popup-button"
-            >
-              Сохранить
-            </button>
-          </form>
-        </div>
-      </div>
       <header class="header">
         <div class="logo"></div>
       </header>
@@ -94,102 +36,6 @@
           ></button>
         </section>
         <section class="elements">
-          <div class="element">
-            <img
-              class="element__delete"
-              src="./images/bucket.svg"
-              alt="Удалить"
-            />
-            <img class="element__image" alt="Пейзаж" />
-            <div class="element__container">
-              <h2 class="element__title"></h2>
-              <button
-                type="button"
-                aria-label="like"
-                class="element__like-button"
-              ></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__delete"
-              src="./images/bucket.svg"
-              alt="Удалить"
-            />
-            <img class="element__image" alt="Пейзаж" />
-            <div class="element__container">
-              <h2 class="element__title"></h2>
-              <button
-                type="button"
-                aria-label="like"
-                class="element__like-button"
-              ></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__delete"
-              src="./images/bucket.svg"
-              alt="Удалить"
-            />
-            <img class="element__image" alt="Пейзаж" />
-            <div class="element__container">
-              <h2 class="element__title"></h2>
-              <button
-                type="button"
-                aria-label="like"
-                class="element__like-button"
-              ></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__delete"
-              src="./images/bucket.svg"
-              alt="Удалить"
-            />
-            <img class="element__image" alt="Пейзаж" />
-            <div class="element__container">
-              <h2 class="element__title"></h2>
-              <button
-                type="button"
-                aria-label="like"
-                class="element__like-button"
-              ></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__delete"
-              src="./images/bucket.svg"
-              alt="Удалить"
-            />
-            <img class="element__image" alt="Пейзаж" />
-            <div class="element__container">
-              <h2 class="element__title"></h2>
-              <button
-                type="button"
-                aria-label="like"
-                class="element__like-button"
-              ></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__delete"
-              src="./images/bucket.svg"
-              alt="Удалить"
-            />
-            <img class="element__image" alt="Пейзаж" />
-            <div class="element__container">
-              <h2 class="element__title"></h2>
-              <button
-                type="button"
-                aria-label="like"
-                class="element__like-button"
-              ></button>
-            </div>
-          </div>
           <template id="element-template">
             <div class="element">
               <img
@@ -209,24 +55,91 @@
             </div>
           </template>
         </section>
-        <template id="popup-template">
-          <div class="popup popup_deep">
-            <div class="popup__image-container">
-              <button
-                class="popup__cross popup__cross_place_image-container"
-                type="button"
-                aria-label="close"
-              ></button>
-              <img alt="Пейзаж" class="popup__image" />
-              <p class="popup__place"></p>
-            </div>
-          </div>
-        </template>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
     </div>
+    <div class="popup" id="person-popup">
+      <button
+        class="popup__cross"
+        type="button"
+        aria-label="close"
+        id="person-cross"
+      ></button>
+      <div class="popup__container">
+        <form class="popup__form" name="profile-edit">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input
+            class="popup__input popup__input_value_name"
+            name="name"
+            type="text"
+            value="Жак-Ив Кусто"
+          />
+          <input
+            class="popup__input popup__input_value_description"
+            name="description"
+            type="text"
+            value="Исследователь океана"
+          />
+          <button
+            class="popup__button"
+            type="submit"
+            aria-label="save"
+            id="person-button"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup" id="item-popup">
+      <button
+        class="popup__cross"
+        type="button"
+        aria-label="close"
+        id="item-popup-cross"
+      ></button>
+      <div class="popup__container">
+        <form class="popup__form" name="new-place">
+          <h2 class="popup__title">Новое место</h2>
+          <input
+            class="popup__input popup__input_value_name"
+            id="item-popup-input-name"
+            name="name"
+            type="text"
+            placeholder="Название"
+          />
+          <input
+            class="popup__input popup__input_value_description"
+            id="item-popup-input-link"
+            name="description"
+            type="text"
+            placeholder="Ссылка на картинку"
+          />
+          <button
+            class="popup__button"
+            type="submit"
+            aria-label="save"
+            id="item-popup-button"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_deep" id="image-popup">
+      <div class="popup__image-container">
+        <button
+          class="popup__cross popup__cross_place_image-container"
+          type="button"
+          aria-label="close"
+        ></button>
+        <img alt="Пейзаж" class="popup__image" />
+        <p class="popup__place"></p>
+      </div>
+    </div>
+    <script src="./data/data.js"></script>
     <script src="./script/script.js"></script>
   </body>
 </html>
