@@ -4,6 +4,7 @@
   background-color: #000000;
   align-items: center;
   font-family: 'Inter', 'Arial', sans-serif;
+  min-height: 100vh;
 }
 
 @media all and (max-width: 885px) {

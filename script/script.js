@@ -1,6 +1,6 @@
 // Get DOM elements
 const editButton = document.querySelector('.profile__edit-button');
-const closePersonModalButton = document.querySelector('#person-cross');
+const buttonClosePopupProfile = document.querySelector('#person-cross');
 const personModal = document.querySelector('#person-popup');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
@@ -11,14 +11,14 @@ const personModalDescription = document.querySelector(
 const personModalSubmit = document.querySelector('#person-button');
 const cardTemplate = document.querySelector('#element-template').content;
 const elementsSection = document.querySelector('.elements');
-const addButton = document.querySelector('.profile__add-button');
-const closeItemModalButton = document.querySelector('#item-popup-cross');
+const buttonAddCard = document.querySelector('.profile__add-button');
+const buttonCloseItemPopup = document.querySelector('#item-popup-cross');
 const itemModal = document.querySelector('#item-popup');
 const itemModalName = document.querySelector('#item-popup-input-name');
 const itemModalLink = document.querySelector('#item-popup-input-link');
 const itemModalSubmit = document.querySelector('#item-popup-button');
 const imageModal = document.querySelector('#image-popup');
-const closeImageModal = document.querySelector(
+const buttonCloseImageModal = document.querySelector(
   '.popup__cross_place_image-container'
 );
 const imageModalImage = document.querySelector('.popup__image');
@@ -40,7 +40,7 @@ editButton.addEventListener('click', () => {
   personModalDescription.value = profileDescription.textContent;
 });
 
-closePersonModalButton.addEventListener('click', () => {
+buttonClosePopupProfile.addEventListener('click', () => {
   closeModal(personModal);
 });
 
@@ -69,9 +69,10 @@ const createCard = (link, name) => {
   cardImage.src = link;
 
   cardImage.addEventListener('click', () => {
-    openModal(imageModal);
     imageModalImage.src = link;
+    imageModalImage.alt = 'Пейзаж';
     imageModalPlace.textContent = name;
+    openModal(imageModal);
   });
 
   cardTitle.textContent = name;
@@ -90,11 +91,11 @@ const renderCards = (item) => {
 renderCards(initialCards);
 
 // Item modal event listeners
-addButton.addEventListener('click', () => {
+buttonAddCard.addEventListener('click', () => {
   openModal(itemModal);
 });
 
-closeItemModalButton.addEventListener('click', () => {
+buttonCloseItemPopup.addEventListener('click', () => {
   closeModal(itemModal);
 });
 
@@ -102,23 +103,21 @@ closeItemModalButton.addEventListener('click', () => {
 const handleItemFormSubmit = (evt) => {
   evt.preventDefault();
 
-  const newItem = [
-    {
-      name: itemModalName.value,
-      link: itemModalLink.value,
-    },
-  ];
+  const newItem = {
+    name: itemModalName.value,
+    link: itemModalLink.value,
+  };
 
   closeModal(itemModal);
   itemModalName.value = '';
   itemModalLink.value = '';
 
-  renderCards(newItem);
+  renderCards([newItem]);
 };
 
 itemModalSubmit.addEventListener('click', handleItemFormSubmit);
 
 // Image modal event listeners
-closeImageModal.addEventListener('click', () => {
+buttonCloseImageModal.addEventListener('click', () => {
   closeModal(imageModal);
 });
