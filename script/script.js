@@ -14,8 +14,8 @@ const elementsSection = document.querySelector('.elements');
 const buttonAddCard = document.querySelector('.profile__add-button');
 const buttonCloseItemPopup = document.querySelector('#item-popup-cross');
 const itemModal = document.querySelector('#item-popup');
-const itemModalName = document.querySelector('#item-popup-input-name');
-const itemModalLink = document.querySelector('#item-popup-input-link');
+const itemModalName = document.querySelector('#title-input');
+const itemModalLink = document.querySelector('#link-input');
 const itemModalSubmit = document.querySelector('#item-popup-button');
 const imageModal = document.querySelector('#image-popup');
 const buttonCloseImageModal = document.querySelector(
@@ -23,6 +23,7 @@ const buttonCloseImageModal = document.querySelector(
 );
 const imageModalImage = document.querySelector('.popup__image');
 const imageModalPlace = document.querySelector('.popup__place');
+const popups = document.querySelectorAll('.popup');
 
 // Open/Close popup
 const openModal = (item) => {
@@ -45,8 +46,7 @@ buttonClosePopupProfile.addEventListener('click', () => {
 });
 
 // Person modal form
-const handlePersonFormSubmit = (evt) => {
-  evt.preventDefault();
+const handlePersonFormSubmit = () => {
   profileName.textContent = personModalName.value;
   profileDescription.textContent = personModalDescription.value;
   closeModal(personModal);
@@ -100,14 +100,11 @@ buttonCloseItemPopup.addEventListener('click', () => {
 });
 
 // Item modal form
-const handleItemFormSubmit = (evt) => {
-  evt.preventDefault();
-
+const handleItemFormSubmit = () => {
   const newItem = {
     name: itemModalName.value,
     link: itemModalLink.value,
   };
-
   closeModal(itemModal);
   itemModalName.value = '';
   itemModalLink.value = '';
@@ -121,3 +118,86 @@ itemModalSubmit.addEventListener('click', handleItemFormSubmit);
 buttonCloseImageModal.addEventListener('click', () => {
   closeModal(imageModal);
 });
+
+// Event handlers
+const keyHandler = (evt) => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closeModal(openedPopup);
+  }
+};
+
+document.addEventListener('keydown', keyHandler);
+
+popups.forEach((popup) => {
+  popup.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+      closeModal(event.currentTarget);
+    }
+  });
+});
+
+// Validation
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('popup__input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__input-error_active');
+};
+
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('popup__input_type_error');
+  errorElement.classList.remove('popup__input-error_active');
+  errorElement.textContent = '';
+};
+
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+  console.log(hasInvalidInput(inputList));
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add('popup__button_inactive');
+  } else {
+    buttonElement.classList.remove('popup__button_inactive');
+  }
+};
+
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  const buttonElement = formElement.querySelector('.popup__button');
+
+  toggleButtonState(inputList, buttonElement);
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement);
+    });
+  });
+};
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll('.popup__form'));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+
+    setEventListeners(formElement);
+  });
+};
+
+enableValidation();
