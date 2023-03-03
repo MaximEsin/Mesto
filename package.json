@@ -1,0 +1,22 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "html, css & js project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaximEsin/Mesto.git"
+  },
+  "author": "Maxim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaximEsin/Mesto/issues"
+  },
+  "homepage": "https://github.com/MaximEsin/Mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0"
+  }
+}
