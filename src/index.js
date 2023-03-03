@@ -1,3 +1,6 @@
+import './pages/index.css';
+import initialCards from './data/data';
+
 // Get DOM elements
 const editButton = document.querySelector('.profile__edit-button');
 const buttonClosePopupProfile = document.querySelector('#person-cross');
