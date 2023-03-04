@@ -1,10 +1,12 @@
-import { openModal, closeModal } from './modal';
-import { imageModal } from '../index';
+import { openModal, closeModal } from './utils';
+import {
+  imageModal,
+  cardTemplate,
+  elementsSection,
+  imageModalImage,
+  imageModalPlace,
+} from './constants';
 // Cards
-const cardTemplate = document.querySelector('#element-template').content;
-const elementsSection = document.querySelector('.elements');
-const imageModalImage = document.querySelector('.popup__image');
-const imageModalPlace = document.querySelector('.popup__place');
 
 export const createCard = (link, name) => {
   const card = cardTemplate.querySelector('.element').cloneNode(true);
@@ -18,6 +20,7 @@ export const createCard = (link, name) => {
   });
 
   cardImage.src = link;
+  cardImage.alt = name;
 
   cardImage.addEventListener('click', () => {
     imageModalImage.src = link;
