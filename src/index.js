@@ -32,7 +32,17 @@ import {
   itemModalSubmit,
   buttonCloseImageModal,
   popups,
+  profileAvatar,
 } from './components/constants';
+
+import { config, getResponse, getUserProfile } from './components/api';
+
+getUserProfile().then((res) => {
+  console.log(res);
+  profileName.textContent = res.name;
+  profileDescription.textContent = res.about;
+  profileAvatar.src = res.avatar;
+});
 
 // Person modal event listeners
 editButton.addEventListener('click', () => {

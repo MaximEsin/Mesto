@@ -29,3 +29,4 @@ export const cardTemplate = document.querySelector('#element-template').content;
 export const elementsSection = document.querySelector('.elements');
 export const imageModalImage = document.querySelector('.popup__image');
 export const imageModalPlace = document.querySelector('.popup__place');
+export const profileAvatar = document.querySelector('.profile__avatar');
