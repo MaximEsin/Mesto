@@ -16,6 +16,7 @@
       </header>
       <main class="content">
         <section class="profile">
+          <div class="profile__avatar-overlay"></div>
           <img class="profile__avatar" alt="Аватар" />
           <div class="profile__info">
             <div class="profile__info-container">
@@ -45,11 +46,14 @@
               <img class="element__image" alt="Пейзаж" />
               <div class="element__container">
                 <h2 class="element__title"></h2>
-                <button
-                  type="button"
-                  aria-label="like"
-                  class="element__like-button"
-                ></button>
+                <div class="element__like-container">
+                  <button
+                    type="button"
+                    aria-label="like"
+                    class="element__like-button"
+                  ></button>
+                  <p class="element__like-number"></p>
+                </div>
               </div>
             </div>
           </template>
@@ -152,6 +156,35 @@
         ></button>
         <img alt="Пейзаж" class="popup__image" />
         <p class="popup__place"></p>
+      </div>
+    </div>
+    <div class="popup" id="avatar-popup">
+      <button
+        class="popup__cross"
+        type="button"
+        aria-label="close"
+        id="avatar-cross"
+      ></button>
+      <div class="popup__container">
+        <form class="popup__form" name="avatar-edit" novalidate>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <input
+            id="avatar-input"
+            class="popup__input popup__input_value_name"
+            name="avatar"
+            type="url"
+            required
+          />
+          <span class="popup__input-error avatar-input-error"></span>
+          <button
+            class="popup__button"
+            type="submit"
+            aria-label="save"
+            id="avatar-button"
+          >
+            Сохранить
+          </button>
+        </form>
       </div>
     </div>
   </body>

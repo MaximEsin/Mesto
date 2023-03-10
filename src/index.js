@@ -1,5 +1,4 @@
 import './pages/index.css';
-import initialCards from './data/data';
 import { openModal, closeModal } from './components/utils';
 import {
   showInputError,
@@ -14,6 +13,7 @@ import { createCard, renderCards } from './components/cards';
 import {
   handlePersonFormSubmit,
   handleItemFormSubmit,
+  handleAvatarFormSubmit,
 } from './components/formHandlers';
 
 import {
@@ -33,15 +33,27 @@ import {
   buttonCloseImageModal,
   popups,
   profileAvatar,
+  avatarModal,
+  avatarOverlay,
+  avatarModalClose,
+  buttonSubmitAvatar,
 } from './components/constants';
 
-import { config, getResponse, getUserProfile } from './components/api';
+import {
+  config,
+  getResponse,
+  getUserProfile,
+  getInitialCards,
+} from './components/api';
 
 getUserProfile().then((res) => {
-  console.log(res);
   profileName.textContent = res.name;
   profileDescription.textContent = res.about;
   profileAvatar.src = res.avatar;
+});
+
+getInitialCards().then((res) => {
+  renderCards(res);
 });
 
 // Person modal event listeners
@@ -73,14 +85,22 @@ popups.forEach((popup) => {
 
 personModalSubmit.addEventListener('click', handlePersonFormSubmit);
 
-renderCards(initialCards);
-
 // Item modal event listeners
 buttonAddCard.addEventListener('click', () => {
   openModal(itemModal);
 });
 
 itemModalSubmit.addEventListener('click', handleItemFormSubmit);
+
+avatarOverlay.addEventListener('click', () => {
+  openModal(avatarModal);
+});
+
+avatarModalClose.addEventListener('click', () => {
+  closeModal(avatarModal);
+});
+
+buttonSubmitAvatar.addEventListener('click', handleAvatarFormSubmit);
 
 const selectors = {
   formSelector: '.popup__form',
