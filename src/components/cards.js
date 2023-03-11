@@ -23,7 +23,9 @@ export const createCard = (link, name, likes, ownerId, cardId) => {
 
   cardDeleteButton.addEventListener('click', () => {
     card.remove();
-    deleteCard(cardId);
+    deleteCard(cardId).catch((err) => {
+      console.log(err);
+    });
   });
 
   cardImage.src = link;
@@ -49,11 +51,15 @@ export const createCard = (link, name, likes, ownerId, cardId) => {
   cardLikeButtoon.addEventListener('click', () => {
     if (!cardLikeButtoon.classList.contains('element__like-button_active')) {
       cardLikeButtoon.classList.add('element__like-button_active');
-      likeCard(cardId);
+      likeCard(cardId).catch((err) => {
+        console.log(err);
+      });
       cardLikes.textContent++;
     } else {
       cardLikeButtoon.classList.remove('element__like-button_active');
-      removeLike(cardId);
+      removeLike(cardId).catch((err) => {
+        console.log(err);
+      });
       cardLikes.textContent--;
     }
   });

@@ -12,6 +12,7 @@ import {
   profileDescription,
   personModalName,
   personModalDescription,
+  personModalSubmit,
   personModal,
   itemModalName,
   itemModalLink,
@@ -25,20 +26,33 @@ import {
 
 // Person modal form
 export const handlePersonFormSubmit = () => {
+  personModalSubmit.textContent = 'Сохранить...';
+  changeProfile(personModalName.value, personModalDescription.value)
+    .then(closeModal(personModal))
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally((personModalSubmit.textContent = 'Сохранить'));
   profileName.textContent = personModalName.value;
   profileDescription.textContent = personModalDescription.value;
-  changeProfile(personModalName.value, personModalDescription.value);
-  closeModal(personModal);
 };
 
 // Item modal form
 export const handleItemFormSubmit = () => {
+  itemModalButton.textContent = 'Сохранить...';
   const newItem = {
     name: itemModalName.value,
     link: itemModalLink.value,
   };
-  addNewCard(newItem.name, newItem.link);
-  closeModal(itemModal);
+  addNewCard(newItem.name, newItem.link)
+    .then((res) => {
+      renderCards([res]);
+    })
+    .then(closeModal(itemModal))
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally((itemModalButton.textContent = 'Сохранить'));
   itemModalForm.reset();
   itemModalButton.classList.add('popup__button_inactive');
   itemModalButton.disabled = true;
@@ -47,6 +61,11 @@ export const handleItemFormSubmit = () => {
 // Avatar modal form
 export const handleAvatarFormSubmit = () => {
   profileAvatar.src = avatarInput.value;
-  changeAvatar(avatarInput.value);
-  closeModal(avatarModal);
+  buttonSubmitAvatar.textContent = 'Сохранить...';
+  changeAvatar(avatarInput.value)
+    .then(closeModal(avatarModal))
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally((buttonSubmitAvatar.textContent = 'Сохранить'));
 };

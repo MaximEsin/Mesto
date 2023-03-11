@@ -46,15 +46,23 @@ import {
   getInitialCards,
 } from './components/api';
 
-getUserProfile().then((res) => {
-  profileName.textContent = res.name;
-  profileDescription.textContent = res.about;
-  profileAvatar.src = res.avatar;
-});
+getUserProfile()
+  .then((res) => {
+    profileName.textContent = res.name;
+    profileDescription.textContent = res.about;
+    profileAvatar.src = res.avatar;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-getInitialCards().then((res) => {
-  renderCards(res);
-});
+getInitialCards()
+  .then((res) => {
+    renderCards(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // Person modal event listeners
 editButton.addEventListener('click', () => {
