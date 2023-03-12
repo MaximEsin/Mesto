@@ -35,3 +35,6 @@ export const avatarOverlay = document.querySelector('.profile__avatar-overlay');
 export const avatarModalClose = document.querySelector('#avatar-cross');
 export const buttonSubmitAvatar = document.querySelector('#avatar-button');
 export const avatarInput = document.querySelector('#avatar-input');
+export const profileForm = document.querySelector('[name=profile-edit');
+export const itemForm = document.querySelector('[name=new-place');
+export const avatarForm = document.querySelector('[name=avatar-edit');

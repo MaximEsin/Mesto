@@ -18,25 +18,28 @@ import {
 
 import {
   editButton,
-  buttonClosePopupProfile,
   personModal,
+  buttonClosePopupProfile,
   imageModal,
   personModalSubmit,
   buttonAddCard,
   buttonCloseItemPopup,
   profileName,
   profileDescription,
+  buttonCloseImageModal,
   personModalName,
   personModalDescription,
   itemModal,
   itemModalSubmit,
-  buttonCloseImageModal,
   popups,
   profileAvatar,
   avatarModal,
   avatarOverlay,
   avatarModalClose,
   buttonSubmitAvatar,
+  profileForm,
+  itemForm,
+  avatarForm,
 } from './components/constants';
 
 import {
@@ -46,19 +49,15 @@ import {
   getInitialCards,
 } from './components/api';
 
-getUserProfile()
-  .then((res) => {
-    profileName.textContent = res.name;
-    profileDescription.textContent = res.about;
-    profileAvatar.src = res.avatar;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+export let userId;
 
-getInitialCards()
-  .then((res) => {
-    renderCards(res);
+Promise.all([getUserProfile(), getInitialCards()])
+  .then(([userData, cards]) => {
+    profileName.textContent = userData.name;
+    profileDescription.textContent = userData.about;
+    profileAvatar.src = userData.avatar;
+    userId = userData._id;
+    renderCards(cards);
   })
   .catch((err) => {
     console.log(err);
@@ -71,16 +70,15 @@ editButton.addEventListener('click', () => {
   personModalDescription.value = profileDescription.textContent;
 });
 
-buttonClosePopupProfile.addEventListener('click', () => {
-  closeModal(personModal);
-});
-
-buttonCloseItemPopup.addEventListener('click', () => {
-  closeModal(itemModal);
-});
-
-buttonCloseImageModal.addEventListener('click', () => {
-  closeModal(imageModal);
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closeModal(popup);
+    }
+    if (evt.target.classList.contains('popup__cross')) {
+      closeModal(popup);
+    }
+  });
 });
 
 popups.forEach((popup) => {
@@ -91,24 +89,20 @@ popups.forEach((popup) => {
   });
 });
 
-personModalSubmit.addEventListener('click', handlePersonFormSubmit);
+profileForm.addEventListener('submit', handlePersonFormSubmit);
 
 // Item modal event listeners
 buttonAddCard.addEventListener('click', () => {
   openModal(itemModal);
 });
 
-itemModalSubmit.addEventListener('click', handleItemFormSubmit);
+itemForm.addEventListener('submit', handleItemFormSubmit);
 
 avatarOverlay.addEventListener('click', () => {
   openModal(avatarModal);
 });
 
-avatarModalClose.addEventListener('click', () => {
-  closeModal(avatarModal);
-});
-
-buttonSubmitAvatar.addEventListener('click', handleAvatarFormSubmit);
+avatarForm.addEventListener('submit', handleAvatarFormSubmit);
 
 const selectors = {
   formSelector: '.popup__form',

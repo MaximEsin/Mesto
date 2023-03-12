@@ -7,6 +7,7 @@ import {
   imageModalPlace,
 } from './constants';
 import { deleteCard, likeCard, removeLike } from './api';
+import { userId } from '..';
 // Cards
 
 export const createCard = (link, name, likes, ownerId, cardId) => {
@@ -17,15 +18,18 @@ export const createCard = (link, name, likes, ownerId, cardId) => {
   const cardLikeButtoon = card.querySelector('.element__like-button');
   const cardLikes = card.querySelector('.element__like-number');
 
-  if (ownerId !== '1c2dbdcc88fec9f17cb92ad0') {
+  if (ownerId !== userId) {
     cardDeleteButton.remove();
   }
 
   cardDeleteButton.addEventListener('click', () => {
-    card.remove();
-    deleteCard(cardId).catch((err) => {
-      console.log(err);
-    });
+    deleteCard(cardId)
+      .then(() => {
+        card.remove();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 
   cardImage.src = link;
@@ -43,24 +47,30 @@ export const createCard = (link, name, likes, ownerId, cardId) => {
   cardLikes.textContent = likes.length;
 
   likes.forEach((item) => {
-    if (item._id === '1c2dbdcc88fec9f17cb92ad0') {
+    if (item._id === userId) {
       cardLikeButtoon.classList.add('element__like-button_active');
     }
   });
 
   cardLikeButtoon.addEventListener('click', () => {
     if (!cardLikeButtoon.classList.contains('element__like-button_active')) {
-      cardLikeButtoon.classList.add('element__like-button_active');
-      likeCard(cardId).catch((err) => {
-        console.log(err);
-      });
-      cardLikes.textContent++;
+      likeCard(cardId)
+        .then((res) => {
+          cardLikeButtoon.classList.add('element__like-button_active');
+          cardLikes.textContent = res.likes.length;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
-      cardLikeButtoon.classList.remove('element__like-button_active');
-      removeLike(cardId).catch((err) => {
-        console.log(err);
-      });
-      cardLikes.textContent--;
+      removeLike(cardId)
+        .then((res) => {
+          cardLikeButtoon.classList.remove('element__like-button_active');
+          cardLikes.textContent = res.likes.length;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   });
   return card;
