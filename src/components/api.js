@@ -34,7 +34,7 @@ export const changeProfile = (name, about) => {
       name: name,
       about: about,
     }),
-  });
+  }).then(getResponse);
 };
 
 export const addNewCard = (name, link) => {

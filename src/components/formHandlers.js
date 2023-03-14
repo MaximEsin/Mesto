@@ -28,10 +28,10 @@ import {
 export const handlePersonFormSubmit = () => {
   personModalSubmit.textContent = 'Сохранить...';
   changeProfile(personModalName.value, personModalDescription.value)
-    .then(() => {
+    .then((res) => {
       closeModal(personModal);
-      profileName.textContent = personModalName.value;
-      profileDescription.textContent = personModalDescription.value;
+      profileName.textContent = res.name;
+      profileDescription.textContent = res.about;
     })
     .catch((err) => {
       console.log(err);
